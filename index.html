@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="tr" class="scroll-smooth">
+<html lang="tr" class="h-full">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FITFLYS | Sınırlarını Aş, Potansiyelini Keşfet</title>
-  <meta name="description" content="FitFlys ile kişiselleştirilmiş antrenman, bilimsel beslenme koçluğu ve üst düzey motivasyonla hayalindeki forma kavuş.">
+  <title>FITFLYS | Çok Yakında Yayındayız</title>
+  <meta name="description" content="FitFlys çok yakında sizlerle! Açılışa özel ayrıcalıklardan ve programlardan ilk siz haberdar olun.">
   
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
@@ -35,753 +35,182 @@
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#090a0f] text-zinc-100 selection:bg-emerald-500 selection:text-black">
+<body class="bg-[#090a0f] text-zinc-100 min-h-full flex flex-col justify-between selection:bg-emerald-500 selection:text-black relative overflow-x-hidden">
 
-  <!-- Background Orbs for Ambient Glow -->
-  <div class="glow-orb-emerald top-10 left-1/4 -translate-x-1/2"></div>
-  <div class="glow-orb-lime top-96 right-10"></div>
+  <!-- Background Ambient Glow Orbs -->
+  <div class="glow-orb-emerald top-10 left-1/2 -translate-x-1/2 opacity-70"></div>
+  <div class="glow-orb-lime bottom-10 right-10 opacity-40"></div>
 
-  <!-- NAVIGATION -->
-  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-6">
-    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-      <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-2.5 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-lime-400 flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
-          <i data-lucide="zap" class="w-6 h-6 text-black fill-current"></i>
-        </div>
-        <div class="flex flex-col">
-          <span class="text-2xl font-black tracking-wider uppercase font-heading text-white">FIT<span class="text-emerald-400">FLYS</span></span>
-        </div>
-      </a>
-
-      <!-- Desktop Nav Links -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
-        <a href="#ozellikler" class="hover:text-emerald-400 transition-colors">Özellikler</a>
-        <a href="#programlar" class="hover:text-emerald-400 transition-colors">Programlar</a>
-        <a href="#hakkimizda" class="hover:text-emerald-400 transition-colors">Hikayemiz</a>
-        <a href="#yorumlar" class="hover:text-emerald-400 transition-colors">Başarı Hikayeleri</a>
-        <a href="#sss" class="hover:text-emerald-400 transition-colors">SSS</a>
-      </nav>
-
-      <!-- Header CTA Buttons -->
-      <div class="hidden md:flex items-center gap-4">
-        <a href="#iletisim" class="px-5 py-2.5 rounded-full text-sm font-semibold bg-white/10 hover:bg-white/15 border border-white/10 transition-colors">
-          Bize Ulaşın
-        </a>
-        <a href="#programlar" class="btn-glow px-6 py-2.5 rounded-full text-sm font-bold bg-gradient-to-r from-emerald-400 to-lime-400 text-black shadow-lg shadow-emerald-500/20">
-          Hemen Başla
-        </a>
+  <!-- HEADER / LOGO -->
+  <header class="w-full max-w-7xl mx-auto px-6 py-8 flex items-center justify-between z-10">
+    <div class="flex items-center gap-2.5">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-lime-400 flex items-center justify-center shadow-lg shadow-emerald-500/25">
+        <i data-lucide="zap" class="w-6 h-6 text-black fill-current"></i>
       </div>
-
-      <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 focus:outline-none">
-        <i data-lucide="menu" class="w-6 h-6"></i>
-      </button>
+      <span class="text-2xl font-black tracking-wider uppercase font-heading text-white">FIT<span class="text-emerald-400">FLYS</span></span>
     </div>
 
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobile-menu" class="hidden md:hidden px-6 pt-4 pb-6 bg-[#0c0e14]/95 backdrop-blur-xl border-b border-zinc-800">
-      <div class="flex flex-col gap-4 text-base font-medium">
-        <a href="#ozellikler" class="mobile-menu-link text-zinc-300 hover:text-emerald-400 py-1">Özellikler</a>
-        <a href="#programlar" class="mobile-menu-link text-zinc-300 hover:text-emerald-400 py-1">Programlar</a>
-        <a href="#hakkimizda" class="mobile-menu-link text-zinc-300 hover:text-emerald-400 py-1">Hikayemiz</a>
-        <a href="#yorumlar" class="mobile-menu-link text-zinc-300 hover:text-emerald-400 py-1">Başarı Hikayeleri</a>
-        <a href="#sss" class="mobile-menu-link text-zinc-300 hover:text-emerald-400 py-1">SSS</a>
-        <div class="pt-2 flex flex-col gap-2">
-          <a href="#iletisim" class="mobile-menu-link text-center py-2.5 rounded-xl text-sm font-semibold bg-white/10">Bize Ulaşın</a>
-          <a href="#programlar" class="mobile-menu-link text-center py-2.5 rounded-xl text-sm font-bold bg-emerald-400 text-black">Hemen Başla</a>
-        </div>
-      </div>
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold tracking-wider uppercase">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+      Yapım Aşamasında
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-12 gap-12 items-center">
-        
-        <!-- Hero Text -->
-        <div class="lg:col-span-7 text-center lg:text-left space-y-8 z-10">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-emerald-400 text-xs md:text-sm font-semibold uppercase tracking-wider">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-            Yeni Nesil Fitness ve Performans Deneyimi
-          </div>
+  <!-- MAIN CONTENT -->
+  <main class="w-full max-w-4xl mx-auto px-6 py-12 flex-1 flex flex-col items-center justify-center text-center z-10">
+    
+    <!-- Badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-white/10 text-zinc-300 text-xs md:text-sm font-semibold mb-8 shadow-xl">
+      <i data-lucide="sparkles" class="w-4 h-4 text-emerald-400"></i>
+      <span>Yeni Nesil Fitness ve Koçluk Deneyimi Hazırlanıyor</span>
+    </div>
 
-          <h1 class="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black leading-[1.08] tracking-tight">
-            Sınırlarını Aş, <br>
-            <span class="gradient-text-emerald">FitFlys</span> ile Zirveye Uç.
-          </h1>
+    <!-- Main Headline -->
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight font-heading leading-tight mb-6">
+      Büyük Değişime Hazır Mısın? <br>
+      <span class="gradient-text-emerald">FitFlys</span> Çok Yakında Başlıyor.
+    </h1>
 
-          <p class="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-            Kişiye özel antrenman programları, bilimsel beslenme rehberliği ve kesintisiz koçluk desteği ile hayal ettiğin performansa ve fiziğe en hızlı şekilde ulaş.
-          </p>
+    <p class="text-zinc-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+      Sizlere en kaliteli antrenman programlarını, bilimsel beslenme rehberliğini ve uzman koçluk altyapısını sunmak için sitemizi titizlikle hazırlıyoruz.
+    </p>
 
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-            <a href="#programlar" class="btn-glow w-full sm:w-auto px-8 py-4 rounded-full text-base font-bold bg-gradient-to-r from-emerald-400 to-lime-400 text-black flex items-center justify-center gap-2 shadow-xl shadow-emerald-500/20">
-              <span>Programları Keşfet</span>
-              <i data-lucide="arrow-right" class="w-5 h-5"></i>
-            </a>
-            <a href="https://wa.me/?text=Merhaba,%20FitFlys%20programları%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="w-full sm:w-auto px-8 py-4 rounded-full text-base font-semibold glass-panel hover:bg-white/10 transition-all flex items-center justify-center gap-2.5 text-zinc-200">
-              <i data-lucide="message-circle" class="w-5 h-5 text-emerald-400"></i>
-              <span>WhatsApp Danışma</span>
-            </a>
-          </div>
-
-          <!-- Social Proof Quick Badges -->
-          <div class="pt-6 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-zinc-400">
-            <div class="flex items-center gap-2">
-              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
-              <span>Sıfır Risk, %100 Memnuniyet</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
-              <span>Her Seviyeye Uygun</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
-              <span>7/24 Birebir İletişim</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hero Visual / Cards -->
-        <div class="lg:col-span-5 relative">
-          <div class="relative mx-auto max-w-md lg:max-w-none">
-            <!-- Hero Image with Glow -->
-            <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
-              <img 
-                src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1000&q=80" 
-                alt="FitFlys Antrenman ve Fitness" 
-                class="w-full h-[480px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#090a0f] via-transparent to-transparent"></div>
-              
-              <!-- Floating Highlight Badge 1 -->
-              <div class="absolute bottom-6 left-6 right-6 glass-panel p-4 rounded-2xl border border-white/15 flex items-center justify-between shadow-xl">
-                <div class="flex items-center gap-3">
-                  <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-                    <i data-lucide="flame" class="w-6 h-6"></i>
-                  </div>
-                  <div>
-                    <div class="text-sm font-bold text-white">Yağ Yakımı & Kas Kazanımı</div>
-                    <div class="text-xs text-zinc-400">Kişiselleştirilmiş İlerleme</div>
-                  </div>
-                </div>
-                <div class="text-right">
-                  <span class="text-xs font-bold text-emerald-400 px-2 py-1 rounded bg-emerald-500/10">PRO KOÇLUK</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Floating Mini Badge -->
-            <div class="absolute -top-6 -right-4 glass-panel px-4 py-3 rounded-2xl shadow-xl border border-emerald-500/30 flex items-center gap-2.5 hidden sm:flex">
-              <i data-lucide="award" class="w-5 h-5 text-lime-400"></i>
-              <span class="text-xs font-bold text-zinc-100">Sertifikalı Antrenörler</span>
-            </div>
-          </div>
-        </div>
-
+    <!-- COUNTDOWN TIMER -->
+    <div class="grid grid-cols-4 gap-3 sm:gap-6 max-w-lg w-full mb-12">
+      <div class="glass-panel p-4 sm:p-5 rounded-2xl border border-white/10 shadow-lg">
+        <div id="days" class="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-white">14</div>
+        <div class="text-[10px] sm:text-xs uppercase tracking-wider text-zinc-400 mt-1 font-semibold">Gün</div>
+      </div>
+      <div class="glass-panel p-4 sm:p-5 rounded-2xl border border-white/10 shadow-lg">
+        <div id="hours" class="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-emerald-400">08</div>
+        <div class="text-[10px] sm:text-xs uppercase tracking-wider text-zinc-400 mt-1 font-semibold">Saat</div>
+      </div>
+      <div class="glass-panel p-4 sm:p-5 rounded-2xl border border-white/10 shadow-lg">
+        <div id="minutes" class="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-white">42</div>
+        <div class="text-[10px] sm:text-xs uppercase tracking-wider text-zinc-400 mt-1 font-semibold">Dakika</div>
+      </div>
+      <div class="glass-panel p-4 sm:p-5 rounded-2xl border border-white/10 shadow-lg">
+        <div id="seconds" class="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-lime-400">19</div>
+        <div class="text-[10px] sm:text-xs uppercase tracking-wider text-zinc-400 mt-1 font-semibold">Saniye</div>
       </div>
     </div>
-  </section>
 
-  <!-- LIVE STATS STRIP -->
-  <section id="stats-section" class="py-12 border-y border-white/5 bg-[#0e1017]">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div class="space-y-1">
-          <div class="text-3xl md:text-5xl font-extrabold font-heading text-white">
-            <span class="counter-val" data-target="5000" data-suffix="+">0</span>
-          </div>
-          <div class="text-xs md:text-sm text-zinc-400 uppercase tracking-wider font-medium">Aktif Sporcu & Üye</div>
-        </div>
-        <div class="space-y-1">
-          <div class="text-3xl md:text-5xl font-extrabold font-heading gradient-text-emerald">
-            <span class="counter-val" data-target="98" data-suffix="%">0</span>
-          </div>
-          <div class="text-xs md:text-sm text-zinc-400 uppercase tracking-wider font-medium">Hedefe Ulaşma Oranı</div>
-        </div>
-        <div class="space-y-1">
-          <div class="text-3xl md:text-5xl font-extrabold font-heading text-white">
-            <span class="counter-val" data-target="15" data-suffix="+">0</span>
-          </div>
-          <div class="text-xs md:text-sm text-zinc-400 uppercase tracking-wider font-medium">Uzman Antrenör & Diyetisyen</div>
-        </div>
-        <div class="space-y-1">
-          <div class="text-3xl md:text-5xl font-extrabold font-heading gradient-text-lime">
-            <span class="counter-val" data-target="100" data-suffix="+">0</span>
-          </div>
-          <div class="text-xs md:text-sm text-zinc-400 uppercase tracking-wider font-medium">Özel Egzersiz Programı</div>
-        </div>
+    <!-- VIP NOTIFY FORM -->
+    <div class="w-full max-w-md glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 shadow-2xl space-y-4 mb-8">
+      <div class="space-y-1">
+        <h3 class="text-lg font-bold text-white">Açılışa Özel %30 İndirimi Yakala</h3>
+        <p class="text-xs text-zinc-400">Site açıldığında ilk haber alanlardan olun ve avantajlı VIP kontenjanını kaçırmayın.</p>
       </div>
+
+      <form id="notify-form" class="flex flex-col sm:flex-row gap-3 pt-2">
+        <input 
+          type="text" 
+          id="notify-input"
+          required 
+          placeholder="E-posta veya Telefon numaranız" 
+          class="flex-1 px-4 py-3 rounded-xl bg-zinc-900/90 border border-zinc-700 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors"
+        />
+        <button 
+          type="submit" 
+          class="btn-glow px-6 py-3 rounded-xl text-sm font-bold bg-gradient-to-r from-emerald-400 to-lime-400 text-black shrink-0 transition-all flex items-center justify-center gap-2"
+        >
+          <span>Haber Ver</span>
+          <i data-lucide="bell" class="w-4 h-4"></i>
+        </button>
+      </form>
     </div>
-  </section>
 
-  <!-- FEATURES / ÖZELLİKLER -->
-  <section id="ozellikler" class="py-24 relative">
-    <div class="max-w-7xl mx-auto px-6">
-      
-      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-        <h2 class="text-xs md:text-sm font-bold tracking-widest text-emerald-400 uppercase">Neden FitFlys?</h2>
-        <p class="text-3xl md:text-5xl font-extrabold tracking-tight font-heading">
-          Geleneksel Yöntemleri Unutun, Bilimsel Gelişin
-        </p>
-        <p class="text-zinc-400 text-base md:text-lg">
-          Her bireyin metabolizması, günlük rutini ve hedefleri farklıdır. FitFlys sizi standart kalıplara sokmaz, size özel yol haritası çizer.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <!-- Feature 1 -->
-        <div class="glass-panel glass-panel-hover p-8 rounded-3xl space-y-4">
-          <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-6">
-            <i data-lucide="dumbbell" class="w-7 h-7"></i>
-          </div>
-          <h3 class="text-xl font-bold text-white">Kişiye Özel Antrenman</h3>
-          <p class="text-zinc-400 text-sm leading-relaxed">
-            İster spor salonunda ister evde; mevcut ekipmanınıza, seviyenize ve hedefinize göre adım adım hazırlanan rutinler.
-          </p>
-        </div>
-
-        <!-- Feature 2 -->
-        <div class="glass-panel glass-panel-hover p-8 rounded-3xl space-y-4">
-          <div class="w-14 h-14 rounded-2xl bg-lime-500/10 text-lime-400 flex items-center justify-center mb-6">
-            <i data-lucide="apple" class="w-7 h-7"></i>
-          </div>
-          <h3 class="text-xl font-bold text-white">Sürdürülebilir Beslenme</h3>
-          <p class="text-zinc-400 text-sm leading-relaxed">
-            Katı, yasaklı diyetler yerine günlük makro ve kalori ihtiyacınıza göre esnek, lezzetli ve uygulanabilir beslenme planları.
-          </p>
-        </div>
-
-        <!-- Feature 3 -->
-        <div class="glass-panel glass-panel-hover p-8 rounded-3xl space-y-4">
-          <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-6">
-            <i data-lucide="heart-pulse" class="w-7 h-7"></i>
-          </div>
-          <h3 class="text-xl font-bold text-white">Form & Hareket Analizi</h3>
-          <p class="text-zinc-400 text-sm leading-relaxed">
-            Egzersiz videolarınızı koçunuza ileterek doğru formu yakalayın, sakatlık riskini sıfıra indirip maksimum verim alın.
-          </p>
-        </div>
-
-        <!-- Feature 4 -->
-        <div class="glass-panel glass-panel-hover p-8 rounded-3xl space-y-4">
-          <div class="w-14 h-14 rounded-2xl bg-lime-500/10 text-lime-400 flex items-center justify-center mb-6">
-            <i data-lucide="line-chart" class="w-7 h-7"></i>
-          </div>
-          <h3 class="text-xl font-bold text-white">Haftalık Takip & Rapor</h3>
-          <p class="text-zinc-400 text-sm leading-relaxed">
-            Haftalık ölçüm ve kilo takipleriyle platoları aşın, değişiminizi somut grafiklerle ve fotoğraflarla gözlemleyin.
-          </p>
-        </div>
-
-      </div>
+    <!-- DIRECT WHATSAPP BUTTON -->
+    <div class="flex items-center gap-3">
+      <a 
+        href="https://wa.me/?text=Merhaba,%20FitFlys%20hakkında%20şimdiden%20bilgi%20almak%20istiyorum." 
+        target="_blank" 
+        rel="noopener"
+        class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full text-sm font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 transition-all"
+      >
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        <span>Şimdiden WhatsApp'tan İletişime Geç</span>
+      </a>
     </div>
-  </section>
 
-  <!-- PROGRAMLAR & FİYATLANDIRMA -->
-  <section id="programlar" class="py-24 bg-[#0a0c13] relative">
-    <div class="max-w-7xl mx-auto px-6">
-      
-      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-        <h2 class="text-xs md:text-sm font-bold tracking-widest text-emerald-400 uppercase">Koçluk Paketleri</h2>
-        <p class="text-3xl md:text-5xl font-extrabold tracking-tight font-heading">
-          Hedefine En Uygun Programı Seç
-        </p>
-        <p class="text-zinc-400 text-base md:text-lg">
-          İhtiyacınıza göre tasarlanmış esnek koçluk seçenekleriyle değişimin ilk adımını hemen atın.
-        </p>
-      </div>
-
-      <div class="grid lg:grid-cols-3 gap-8 items-stretch">
-        
-        <!-- Tier 1: Başlangıç Core -->
-        <div class="glass-panel p-8 rounded-3xl flex flex-col justify-between border border-white/5 relative">
-          <div class="space-y-6">
-            <div>
-              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-zinc-800 text-zinc-300">BAŞLANGIÇ</span>
-              <h3 class="text-2xl font-bold text-white mt-3">Core Fitness</h3>
-              <p class="text-zinc-400 text-sm mt-1">Kendi kendine disiplinle ilerlemek isteyenler için ideal başlangıç rehberi.</p>
-            </div>
-
-            <div class="py-4 border-y border-white/5">
-              <div class="flex items-baseline gap-1">
-                <span class="text-4xl font-black text-white font-heading">₺590</span>
-                <span class="text-zinc-400 text-sm">/ tek seferlik</span>
-              </div>
-            </div>
-
-            <ul class="space-y-3.5 text-sm text-zinc-300">
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-5 h-5 text-emerald-400 shrink-0"></i>
-                <span>Kişiye Özel 8 Haftalık Antrenman Planı</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-5 h-5 text-emerald-400 shrink-0"></i>
-                <span>Günlük Kalori & Makro Hesaplama Tablosu</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-5 h-5 text-emerald-400 shrink-0"></i>
-                <span>Video Anlatımlı Egzersiz Kılavuzu</span>
-              </li>
-              <li class="flex items-center gap-3 text-zinc-500">
-                <i data-lucide="x" class="w-5 h-5 shrink-0"></i>
-                <span>Birebir Haftalık Görüntülü Takip</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="pt-8">
-            <a href="#iletisim" class="w-full block text-center py-3.5 rounded-2xl text-sm font-bold bg-white/10 hover:bg-white/15 transition-all text-white border border-white/10">
-              Paketi Seç
-            </a>
-          </div>
-        </div>
-
-        <!-- Tier 2: Pro Performans (Highlighted) -->
-        <div class="glass-panel p-8 rounded-3xl flex flex-col justify-between border-2 border-emerald-500/60 relative bg-gradient-to-b from-emerald-950/20 to-[#12141d] shadow-2xl shadow-emerald-500/10 scale-105">
-          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-emerald-400 to-lime-400 text-black text-xs font-black tracking-wider uppercase shadow-md">
-            EN ÇOK TERCİH EDİLEN
-          </div>
-
-          <div class="space-y-6">
-            <div>
-              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400">PRO KOÇLUK</span>
-              <h3 class="text-2xl font-bold text-white mt-3">Pro Performans</h3>
-              <p class="text-zinc-400 text-sm mt-1">Sürekli kontrol, dinamik güncellemeler ve maksimum sonuç odaklı koçluk.</p>
-            </div>
-
-            <div class="py-4 border-y border-white/10">
-              <div class="flex items-baseline gap-1">
-                <span class="text-4xl font-black text-white font-heading">₺1.190</span>
-                <span class="text-zinc-400 text-sm">/ aylık</span>
-              </div>
-            </div>
-
-            <ul class="space-y-3.5 text-sm text-zinc-300">
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-5 h-5 text-emerald-400 shrink-0"></i>
-                <span>Tüm Core Program İçerikleri</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-5 h-5 text-emerald-400 shrink-0"></i>
-                <span>Haftalık Birebir Form & Kilo Kontrolü</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-5 h-5 text-emerald-400 shrink-0"></i>
-                <span>WhatsApp Üzerinden Koç Desteği</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-5 h-5 text-emerald-400 shrink-0"></i>
-                <span>Egzersiz Formu Video Düzeltmeleri</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-5 h-5 text-emerald-400 shrink-0"></i>
-                <span>Gerektiğinde Anlık Program Revizyonu</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="pt-8">
-            <a href="#iletisim" class="btn-glow w-full block text-center py-3.5 rounded-2xl text-sm font-bold bg-gradient-to-r from-emerald-400 to-lime-400 text-black shadow-lg shadow-emerald-500/20">
-              Hemen Başla
-            </a>
-          </div>
-        </div>
-
-        <!-- Tier 3: VIP Elit -->
-        <div class="glass-panel p-8 rounded-3xl flex flex-col justify-between border border-white/5 relative">
-          <div class="space-y-6">
-            <div>
-              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-zinc-800 text-zinc-300">VIP ELİT</span>
-              <h3 class="text-2xl font-bold text-white mt-3">1-on-1 Elit Koçluk</h3>
-              <p class="text-zinc-400 text-sm mt-1">Özel hedefler, yarışma hazırlığı veya sıfır ödünlü VIP birebir rehberlik.</p>
-            </div>
-
-            <div class="py-4 border-y border-white/5">
-              <div class="flex items-baseline gap-1">
-                <span class="text-4xl font-black text-white font-heading">₺2.490</span>
-                <span class="text-zinc-400 text-sm">/ aylık</span>
-              </div>
-            </div>
-
-            <ul class="space-y-3.5 text-sm text-zinc-300">
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-5 h-5 text-emerald-400 shrink-0"></i>
-                <span>Haftalık Birebir Görüntülü Koçluk Seansı</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-5 h-5 text-emerald-400 shrink-0"></i>
-                <span>7/24 Öncelikli VIP İletişim Hattı</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-5 h-5 text-emerald-400 shrink-0"></i>
-                <span>Kapsamlı Kan Tahlili & Supplement Danışmanlığı</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-5 h-5 text-emerald-400 shrink-0"></i>
-                <span>Sınırsız Program & Diyet Güncellemesi</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="pt-8">
-            <a href="#iletisim" class="w-full block text-center py-3.5 rounded-2xl text-sm font-bold bg-white/10 hover:bg-white/15 transition-all text-white border border-white/10">
-              VIP Başvuru Yap
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT / HİKAYEMİZ -->
-  <section id="hakkimizda" class="py-24 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        
-        <div class="space-y-6">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-            FitFlys Felsefesi
-          </div>
-          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight font-heading leading-tight">
-            Sadece Ağırlık Kaldırmıyoruz, Hayat Biçimi İnşa Ediyoruz
-          </h2>
-          <p class="text-zinc-400 leading-relaxed">
-            FitFlys; spor salonuna hapsolmuş katı kurallardan, gerçek dışı diyet mitlerinden ve motivasyonsuzluktan sıkılanlar için kuruldu. 
-          </p>
-          <p class="text-zinc-400 leading-relaxed">
-            Bizim amacımız sizi 3 haftalık geçici heveslerle değil, ömür boyu sürdürebileceğiniz enerjik, dinamik ve güçlü bir zihin-beden dengesine ulaştırmak.
-          </p>
-
-          <div class="grid sm:grid-cols-2 gap-6 pt-4">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-                <i data-lucide="shield-check" class="w-5 h-5"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-white text-base">Kanıtlanmış Bilim</h4>
-                <p class="text-zinc-400 text-xs mt-1">Efsanelerle değil, spor biliminin onayladığı metotlarla çalışıyoruz.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-lime-500/20 text-lime-400 flex items-center justify-center shrink-0">
-                <i data-lucide="users" class="w-5 h-5"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-white text-base">Yalnız Değilsin</h4>
-                <p class="text-zinc-400 text-xs mt-1">Her düştüğünde elinden tutan, seni sürekli motive eden bir topluluk.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative">
-          <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-            <img 
-              src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=80" 
-              alt="FitFlys Antrenör ve Topluluk" 
-              class="w-full h-[450px] object-cover"
-            />
-          </div>
-          <div class="absolute -bottom-6 -left-6 glass-panel p-6 rounded-2xl border border-white/15 max-w-xs shadow-2xl hidden sm:block">
-            <div class="text-2xl font-black gradient-text-emerald font-heading">"Limit sensin."</div>
-            <p class="text-zinc-400 text-xs mt-2">Bugün başladığın adım, yarın gurur duyacağın vücudun olacak.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS / BAŞARI HİKAYELERİ -->
-  <section id="yorumlar" class="py-24 bg-[#0a0c13] border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-6">
-      
-      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-        <h2 class="text-xs md:text-sm font-bold tracking-widest text-emerald-400 uppercase">Gerçek Değişimler</h2>
-        <p class="text-3xl md:text-5xl font-extrabold tracking-tight font-heading">
-          FitFlys Sporcuları Ne Diyor?
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        
-        <!-- Review 1 -->
-        <div class="glass-panel p-8 rounded-3xl space-y-4 border border-white/5">
-          <div class="flex items-center gap-1 text-emerald-400">
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          </div>
-          <p class="text-zinc-300 text-sm italic leading-relaxed">
-            "Yıllardır spora başlayıp 2 ayda bırakırdım. FitFlys'taki koçumun düzenli takibi ve bana özel esnek beslenme listesi sayesinde 4 ayda 12 kilo verdim ve hayatımın en fit halindeyim!"
-          </p>
-          <div class="flex items-center gap-3 pt-2">
-            <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-white text-sm">
-              BK
-            </div>
-            <div>
-              <div class="font-bold text-white text-sm">Burak K.</div>
-              <div class="text-xs text-zinc-500">Yazılım Mühendisi, İstanbul</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Review 2 -->
-        <div class="glass-panel p-8 rounded-3xl space-y-4 border border-white/5">
-          <div class="flex items-center gap-1 text-emerald-400">
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          </div>
-          <p class="text-zinc-300 text-sm italic leading-relaxed">
-            "Sakatlıktan sonra spora dönmekten çok korkuyordum. Video form analizleri ile her hareketimi tek tek düzelttiler. Kendime güvenim geri geldi."
-          </p>
-          <div class="flex items-center gap-3 pt-2">
-            <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-white text-sm">
-              EA
-            </div>
-            <div>
-              <div class="font-bold text-white text-sm">Ece A.</div>
-              <div class="text-xs text-zinc-500">Mimar, Ankara</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="glass-panel p-8 rounded-3xl space-y-4 border border-white/5">
-          <div class="flex items-center gap-1 text-emerald-400">
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          </div>
-          <p class="text-zinc-300 text-sm italic leading-relaxed">
-            "Pro Performans paketi aldım. WhatsApp üzerinden sorduğum her soruya en geç 15 dakikada detaylı ses kaydıyla dönüyorlar. Bu ilgi başka yerde yok."
-          </p>
-          <div class="flex items-center gap-3 pt-2">
-            <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-white text-sm">
-              MY
-            </div>
-            <div>
-              <div class="font-bold text-white text-sm">Murat Y.</div>
-              <div class="text-xs text-zinc-500">Girişimci, İzmir</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ / SIKÇA SORULAN SORULAR -->
-  <section id="sss" class="py-24 relative">
-    <div class="max-w-4xl mx-auto px-6">
-      
-      <div class="text-center space-y-4 mb-16">
-        <h2 class="text-xs md:text-sm font-bold tracking-widest text-emerald-400 uppercase">Aklınıza Takılanlar</h2>
-        <p class="text-3xl md:text-5xl font-extrabold tracking-tight font-heading">
-          Sıkça Sorulan Sorular
-        </p>
-      </div>
-
-      <div class="space-y-4">
-        
-        <!-- Accordion Item 1 -->
-        <div class="glass-panel rounded-2xl border border-white/5 overflow-hidden">
-          <button class="accordion-btn w-full p-6 text-left flex items-center justify-between font-bold text-base md:text-lg text-white hover:text-emerald-400 transition-colors">
-            <span>Daha önce hiç spor yapmadım, FitFlys benim için uygun mu?</span>
-            <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-zinc-400 transition-transform duration-300"></i>
-          </button>
-          <div class="accordion-content px-6 pb-6 text-zinc-400 text-sm leading-relaxed">
-            Kesinlikle evet! Üyelerimizin önemli bir kısmı sıfırdan başlayanlardan oluşuyor. Programınız tamamen mevcut fitness seviyenize, vücut yapınıza ve kondisyonunuza göre en temelden başlayarak hazırlanır.
-          </div>
-        </div>
-
-        <!-- Accordion Item 2 -->
-        <div class="glass-panel rounded-2xl border border-white/5 overflow-hidden">
-          <button class="accordion-btn w-full p-6 text-left flex items-center justify-between font-bold text-base md:text-lg text-white hover:text-emerald-400 transition-colors">
-            <span>Spor salonuna gitmeden evde uygulayabilir miyim?</span>
-            <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-zinc-400 transition-transform duration-300"></i>
-          </button>
-          <div class="accordion-content px-6 pb-6 text-zinc-400 text-sm leading-relaxed">
-            Evet. Başvuru formunuzda nerede antrenman yapacağınızı (ev / salon) ve varsa mevcut ekipmanlarınızı (dambıl, direnç bandı vb.) soruyoruz. İster sadece kendi vücut ağırlığınızla ister tam donanımlı salonda çalışın; maksimum verim alacak program kurgulanır.
-          </div>
-        </div>
-
-        <!-- Accordion Item 3 -->
-        <div class="glass-panel rounded-2xl border border-white/5 overflow-hidden">
-          <button class="accordion-btn w-full p-6 text-left flex items-center justify-between font-bold text-base md:text-lg text-white hover:text-emerald-400 transition-colors">
-            <span>Programım ne kadar sürede hazırlanır ve nasıl iletilir?</span>
-            <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-zinc-400 transition-transform duration-300"></i>
-          </button>
-          <div class="accordion-content px-6 pb-6 text-zinc-400 text-sm leading-relaxed">
-            Kayıt olduktan ve detaylı analiz formunuzu doldurduktan sonra, uzman koçlarımız verilerinizi inceleyerek 24-48 saat içerisinde kişisel planınızı hazırlar ve WhatsApp/E-posta üzerinden size ulaştırır.
-          </div>
-        </div>
-
-        <!-- Accordion Item 4 -->
-        <div class="glass-panel rounded-2xl border border-white/5 overflow-hidden">
-          <button class="accordion-btn w-full p-6 text-left flex items-center justify-between font-bold text-base md:text-lg text-white hover:text-emerald-400 transition-colors">
-            <span>Aç kalmadan kilo vermek veya kas yapmak mümkün mü?</span>
-            <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-zinc-400 transition-transform duration-300"></i>
-          </button>
-          <div class="accordion-content px-6 pb-6 text-zinc-400 text-sm leading-relaxed">
-            FitFlys'ta katı, tek tip veya aç bırakan diyetler bulunmaz. Sağlıklı karbonhidrat, yeterli protein ve kaliteli yağ dengesiyle doya doya yiyerek, enerjinizi koruyarak forma girebilirsiniz.
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT & WHATSAPP SECTION -->
-  <section id="iletisim" class="py-24 bg-[#0a0c13] relative border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-6">
-      
-      <div class="grid lg:grid-cols-12 gap-12 items-center">
-        
-        <!-- Left Column: Direct Info -->
-        <div class="lg:col-span-5 space-y-8">
-          <div>
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4">
-              İletişime Geç
-            </div>
-            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight font-heading leading-tight">
-              Değişime Başlamak İçin Bir Adım At
-            </h2>
-            <p class="text-zinc-400 text-sm md:text-base mt-4 leading-relaxed">
-              Hangi programın size uygun olduğundan emin değil misiniz? Formu doldurun veya doğrudan WhatsApp üzerinden antrenörümüze mesaj atın.
-            </p>
-          </div>
-
-          <div class="space-y-4">
-            <a href="https://wa.me/?text=Merhaba,%20FitFlys%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="flex items-center gap-4 p-4 rounded-2xl glass-panel glass-panel-hover border border-white/5">
-              <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-                <i data-lucide="message-circle" class="w-6 h-6"></i>
-              </div>
-              <div>
-                <div class="text-xs text-zinc-400 font-medium">Anında Yanıt</div>
-                <div class="text-white font-bold">WhatsApp Canlı Destek Hattı</div>
-              </div>
-            </a>
-
-            <div class="flex items-center gap-4 p-4 rounded-2xl glass-panel border border-white/5">
-              <div class="w-12 h-12 rounded-xl bg-lime-500/20 text-lime-400 flex items-center justify-center shrink-0">
-                <i data-lucide="mail" class="w-6 h-6"></i>
-              </div>
-              <div>
-                <div class="text-xs text-zinc-400 font-medium">E-posta</div>
-                <div class="text-white font-bold">info@fitflys.com</div>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4 p-4 rounded-2xl glass-panel border border-white/5">
-              <div class="w-12 h-12 rounded-xl bg-zinc-800 text-zinc-300 flex items-center justify-center shrink-0">
-                <i data-lucide="globe" class="w-6 h-6"></i>
-              </div>
-              <div>
-                <div class="text-xs text-zinc-400 font-medium">Alan Adı / Web</div>
-                <div class="text-white font-bold">fitflys.com</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Column: Interactive Form -->
-        <div class="lg:col-span-7">
-          <div class="glass-panel p-8 md:p-10 rounded-3xl border border-white/10 relative">
-            <h3 class="text-2xl font-bold text-white mb-2">Ücretsiz Ön Danışmanlık Formu</h3>
-            <p class="text-zinc-400 text-sm mb-8">Bilgilerinizi bırakın, hedefinize en uygun planı birlikte belirleyelim.</p>
-
-            <form id="contact-form" class="space-y-5">
-              <div class="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label class="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2" for="form-name">Adınız Soyadınız *</label>
-                  <input type="text" id="form-name" required placeholder="Örn: Ahmet Yılmaz" class="w-full px-4 py-3 rounded-xl bg-zinc-900/80 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-400 transition-colors text-sm">
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2" for="form-phone">Telefon / WhatsApp *</label>
-                  <input type="tel" id="form-phone" required placeholder="05XX XXX XX XX" class="w-full px-4 py-3 rounded-xl bg-zinc-900/80 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-400 transition-colors text-sm">
-                </div>
-              </div>
-
-              <div class="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label class="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2" for="form-email">E-posta Adresiniz</label>
-                  <input type="email" id="form-email" placeholder="ahmet@example.com" class="w-full px-4 py-3 rounded-xl bg-zinc-900/80 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-400 transition-colors text-sm">
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2" for="form-goal">Ana Hedefiniz</label>
-                  <select id="form-goal" class="w-full px-4 py-3 rounded-xl bg-zinc-900/80 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-400 transition-colors text-sm">
-                    <option value="kilo-verme">Kilo Verme & Yağ Yakımı</option>
-                    <option value="kas-kazanma">Kas Kazanımı & Hacim</option>
-                    <option value="kondisyon">Kondisyon & Güç Artışı</option>
-                    <option value="durus-saglik">Postür Düzeltme & Sağlıklı Yaşam</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-2" for="form-message">Mesajınız veya Sorularınız</label>
-                <textarea id="form-message" rows="3" placeholder="Mevcut durumunuz veya sormak istedikleriniz..." class="w-full px-4 py-3 rounded-xl bg-zinc-900/80 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-400 transition-colors text-sm"></textarea>
-              </div>
-
-              <button type="submit" class="btn-glow w-full py-4 rounded-xl text-base font-bold bg-gradient-to-r from-emerald-400 to-lime-400 text-black shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center gap-2">
-                <span>Başvuruyu Gönder</span>
-                <i data-lucide="send" class="w-5 h-5"></i>
-              </button>
-            </form>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  </main>
 
   <!-- FOOTER -->
-  <footer class="py-12 border-t border-white/10 bg-[#07080c] text-zinc-400 text-sm">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-      
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-black font-black">
-          ⚡
-        </div>
-        <span class="text-lg font-black tracking-wider uppercase font-heading text-white">FIT<span class="text-emerald-400">FLYS</span></span>
-        <span class="text-xs text-zinc-500 ml-2">| fitflys.com</span>
-      </div>
+  <footer class="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/5 text-xs text-zinc-500 z-10">
+    <div class="flex items-center gap-2">
+      <span class="font-bold text-zinc-300">FITFLYS</span>
+      <span>• fitflys.com</span>
+    </div>
 
-      <div class="flex items-center gap-6 text-xs text-zinc-400">
-        <a href="#ozellikler" class="hover:text-emerald-400 transition-colors">Özellikler</a>
-        <a href="#programlar" class="hover:text-emerald-400 transition-colors">Programlar</a>
-        <a href="#hakkimizda" class="hover:text-emerald-400 transition-colors">Hakkımızda</a>
-        <a href="#sss" class="hover:text-emerald-400 transition-colors">SSS</a>
-        <a href="#iletisim" class="hover:text-emerald-400 transition-colors">İletişim</a>
-      </div>
-
-      <div class="text-xs text-zinc-500 text-center md:text-right">
-        &copy; 2026 FitFlys. Tüm hakları saklıdır.
-      </div>
+    <div>
+      &copy; 2026 FitFlys. Tüm hakları saklıdır.
     </div>
   </footer>
 
-  <!-- Interactive Feedback Toast -->
+  <!-- Toast Notification -->
   <div id="toast" class="flex items-center gap-3">
     <i data-lucide="check-circle" class="w-6 h-6 text-emerald-400 shrink-0"></i>
     <span id="toast-message" class="text-sm font-medium"></span>
   </div>
 
-  <!-- Custom Script -->
-  <script src="script.js"></script>
+  <script>
+    // Lucide Icons
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+
+    // Dynamic Countdown Timer (14 days from now)
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 14);
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        document.getElementById('days').innerText = "00";
+        document.getElementById('hours').innerText = "00";
+        document.getElementById('minutes').innerText = "00";
+        document.getElementById('seconds').innerText = "00";
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+      document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+      document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+      document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Notify Form Submission
+    const notifyForm = document.getElementById('notify-form');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toast-message');
+
+    if (notifyForm) {
+      notifyForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const input = document.getElementById('notify-input');
+        const val = input ? input.value.trim() : '';
+
+        if (toast && toastMessage) {
+          toastMessage.innerText = 'Teşekkürler! Açılış günü ilk haberdar olan ve %30 indirim kazanan siz olacaksınız.';
+          toast.classList.add('show');
+          setTimeout(() => {
+            toast.classList.remove('show');
+          }, 4500);
+        }
+
+        notifyForm.reset();
+      });
+    }
+  </script>
 </body>
 </html>
