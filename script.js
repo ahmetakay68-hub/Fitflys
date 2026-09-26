@@ -21,10 +21,10 @@ const flavors = {
   },
   red: {
     index: '02 / KIRMIZI KARIŞIM',
-    name: 'Kızıl Nar',
+    name: 'Kızıl Pancar',
     copy: 'Pancarın topraksı tadı, yeşil elma ve aromatik otlarla dengelenir.',
     target: '#product-kizil-nar',
-    linkLabel: "Kızıl Nar'ı keşfet",
+    linkLabel: "Kızıl Pancar'ı keşfet",
     garnish: 'assets/hero-ingredients-red.png',
     highlights: [
       { id: 'beet', label: 'Pancar' },
