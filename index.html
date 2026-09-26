@@ -1,247 +1,76 @@
-<!doctype html>
-<html lang="tr" class="no-js">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f8f8f3" />
-    <meta name="description" content="Meyve, sebze ve bitkilerle hazırlanan üç soğuk sıkım FitFlys tarifi: Gün Işığı, Kızıl Pancar ve Yeşil Filiz." />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="FitFlys — Gün Işığı, Kızıl Pancar, Yeşil Filiz" />
-    <meta property="og:description" content="Meyve, sebze ve bitkilerle hazırlanan üç soğuk sıkım tarif. Her biri başka bir tat." />
-    <link rel="canonical" href="https://fitflys.com/" />
-    <link rel="icon" href="assets/fitflys-mark.svg" type="image/svg+xml" />
-    <title>FitFlys — Gün Işığı, Kızıl Pancar, Yeşil Filiz</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=34" />
-    <script src="script.js?v=26" defer></script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main">İçeriğe geç</a>
-    <div class="scroll-meter" aria-hidden="true"><span id="scroll-meter-bar"></span></div>
-    <svg class="ingredient-artwork" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-      <symbol id="ingredient-carrot" viewBox="0 0 48 48"><path d="M20 15c-2-5-1-9 1-12 4 3 5 6 4 10 2-5 5-7 9-8 0 5-2 9-7 12" fill="#6d8c58"/><path d="M17 15c5-2 12 0 17 5-3 10-9 18-17 24-2-10-3-20 0-29Z" fill="#e78a4b" stroke="#ba6335" stroke-linejoin="round"/><path d="m18 25 6 2m-5 5 5 2m0-14 4 2" fill="none" stroke="#f8c18a" stroke-linecap="round" stroke-width="1.5"/></symbol>
-      <symbol id="ingredient-ginger" viewBox="0 0 48 48"><path d="M12 27c-2-4 1-8 5-8 0-5 6-7 9-3 4-3 9 0 8 5 5 1 6 7 2 10 0 5-5 7-9 4-4 4-10 2-10-3-5 1-8-2-5-5Z" fill="#d9ae70" stroke="#aa8053" stroke-linejoin="round" stroke-width="1.5"/><path d="m19 20 2 4m9-4-3 5m-8 7 5-2m10 2-4-4" fill="none" stroke="#f3d5a4" stroke-linecap="round" stroke-width="1.5"/></symbol>
-      <symbol id="ingredient-orange" viewBox="0 0 48 48"><circle cx="24" cy="26" r="15" fill="#f0a04e" stroke="#d47b31" stroke-width="1.5"/><path d="M25 10c4-5 9-5 13-3-2 5-6 7-12 6" fill="#748e58"/><path d="M16 20c3-4 7-6 12-7" fill="none" stroke="#ffd08c" stroke-linecap="round" stroke-width="1.5"/><circle cx="24" cy="26" r="10.5" fill="none" stroke="#ffd08c" stroke-width=".7" opacity=".8"/></symbol>
-      <symbol id="ingredient-apple" viewBox="0 0 48 48"><path d="M24 17c-7-6-16-1-15 9 1 9 7 16 13 16 2 0 3-1 5-1s3 1 5 1c6 0 12-8 12-17 0-9-9-13-17-8-1 1-2 1-3 0Z" fill="#8eae68" stroke="#66884f" stroke-linejoin="round" stroke-width="1.5"/><path d="M24 17c0-5 2-8 6-10" fill="none" stroke="#79553b" stroke-linecap="round" stroke-width="2"/><path d="M28 11c4-5 9-5 12-3-2 4-6 6-12 5" fill="#668b58"/></symbol>
-      <symbol id="ingredient-lemon" viewBox="0 0 48 48"><path d="M9 26c4-10 12-16 22-16 4 0 7 2 9 5-1 11-9 22-20 24-5 1-10-3-11-8l-3-3 3-2Z" fill="#edce62" stroke="#c2a440" stroke-linejoin="round" stroke-width="1.5"/><path d="M27 11c3-5 8-6 12-4-2 4-6 6-11 6" fill="#6c8a53"/><path d="M15 29c4-7 10-12 18-15" fill="none" stroke="#f8e89e" stroke-linecap="round" stroke-width="1.5"/></symbol>
-      <symbol id="ingredient-mint" viewBox="0 0 48 48"><path d="M24 41V15m0 13C16 27 12 22 13 16c7-1 11 3 11 9m0-2c1-8 6-12 13-11 0 7-4 12-13 13m0-13C20 7 15 6 10 9c1 6 6 9 14 9" fill="#87a979" stroke="#5f8056" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="m18 22 5 4m9-8-7 7m-10-12 8 5" fill="none" stroke="#c9d9ba" stroke-linecap="round" stroke-width="1.2"/></symbol>
-      <symbol id="ingredient-beet" viewBox="0 0 48 48"><path d="M22 20c-3-8-1-13 2-17 4 4 5 8 3 14 4-8 9-10 14-9-1 7-5 11-12 14" fill="#6d8b59"/><path d="M24 17c8 0 14 5 13 13-1 7-7 12-13 16-6-4-12-9-13-16-1-8 5-13 13-13Z" fill="#9c4d64" stroke="#74364d" stroke-linejoin="round" stroke-width="1.5"/><path d="M24 43v3m-7-21c3-2 7-2 11 0" fill="none" stroke="#d88798" stroke-linecap="round" stroke-width="1.5"/></symbol>
-      <symbol id="ingredient-basil" viewBox="0 0 48 48"><path d="M24 42V14m0 18c-8 0-13-4-13-10 7-2 12 1 13 6m0-1c1-8 6-12 13-11 0 7-4 12-13 13m0-14c-2-6-7-9-13-7 0 6 5 10 13 11" fill="#7b9a62" stroke="#567849" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="m15 24 7 5m12-10-9 8m-8-13 7 5" fill="none" stroke="#c8d7b5" stroke-linecap="round" stroke-width="1.2"/></symbol>
-      <symbol id="ingredient-spinach" viewBox="0 0 48 48"><path d="M8 38C7 18 18 7 39 7c1 20-8 33-27 34l-4-3Z" fill="#70905d" stroke="#4c704b" stroke-linejoin="round" stroke-width="1.5"/><path d="M12 38c7-9 14-16 24-25m-15 17-1-9m9 0 5 1" fill="none" stroke="#c0d0a8" stroke-linecap="round" stroke-width="1.5"/></symbol>
-      <symbol id="ingredient-celery" viewBox="0 0 48 48"><path d="M13 42c-1-12 0-22 4-33m4 33c-1-13 0-24 3-35m4 35c0-13 2-24 6-32" fill="none" stroke="#78a46b" stroke-linecap="round" stroke-width="5"/><path d="M15 42c0-12 1-23 4-33m7 33c0-12 1-23 4-34" fill="none" stroke="#b9cf9e" stroke-linecap="round" stroke-width="1.5"/><path d="M16 11c-4-3-5-6-4-9 5 1 8 4 8 9m10-1c1-5 4-8 8-9 1 5-1 8-6 11" fill="#79965d"/></symbol>
-      <symbol id="ingredient-cucumber" viewBox="0 0 48 48"><path d="M12 39c-5-4-5-10 0-16L27 8c4-4 10-4 13 0 4 4 3 10-1 14L24 38c-4 4-9 5-12 1Z" fill="#79a26b" stroke="#527c4b" stroke-width="1.5"/><path d="m17 34 17-19" fill="none" stroke="#bdd3a8" stroke-linecap="round" stroke-width="2"/><g fill="#456e48"><circle cx="17" cy="24" r="1"/><circle cx="23" cy="17" r="1"/><circle cx="26" cy="28" r="1"/><circle cx="31" cy="11" r="1"/></g></symbol>
-      <symbol id="ingredient-parsley" viewBox="0 0 48 48"><path d="M24 42V22m0 7c-7 0-12-4-12-9 6-2 11 1 12 6m0-1c-1-7 3-12 9-13 3 6 0 12-8 15m-1-7c-3-6-8-8-13-5 1 6 5 10 13 11m1 5c6-1 10 1 12 6-5 3-10 1-13-3" fill="#81a46a" stroke="#5a8052" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></symbol>
-    </svg>
+<!DOCTYPE html>
+<html lang="tr" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitFlys | Çok Yakında Sizlerle</title>
+  <meta name="description" content="FitFlys çok yakında sizlerle.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 
-    <header class="site-header" id="top">
-      <a class="brand brand--hero" href="#top" aria-label="FitFlys ana sayfa">
-        <img class="brand__mark" src="assets/fitflys-mark.svg" alt="" />
-        <span class="brand__word">FITFLYS<span class="brand__sub">MEYVE · SEBZE · SOĞUK SIKIM</span></span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Menüyü aç"><span></span><span></span></button>
-      <nav class="main-nav" id="main-nav" aria-label="Ana menü">
-        <a href="#products">İçecekler</a>
-        <a href="#method">Yaklaşımımız</a>
-        <a href="#ingredients">Malzemeler</a>
-        <a href="#story">Hikâyemiz</a>
-        <a class="nav-cta" href="#products">Ürünleri keşfet <span aria-hidden="true">↗</span></a>
-      </nav>
-    </header>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <main id="main">
-      <section class="hero" id="showcase" data-theme="orange" aria-labelledby="hero-title">
-        <div class="hero__copy">
-          <p class="eyebrow"><span class="eyebrow__dot"></span> MEYVE + SEBZE · SOĞUK SIKIM</p>
-          <h1 id="hero-title">Her renkte<br />başka bir<br /><em>tat.</em></h1>
-          <p class="hero__intro">Meyve, sebze ve bitkilerden üç soğuk sıkım tarif. Her biri kendi rengi ve karakteriyle.</p>
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
 
-          <div class="flavor-detail" aria-live="polite" aria-atomic="true">
-            <p class="flavor-detail__index" id="flavor-index">01 / TURUNCU KARIŞIM</p>
-            <h2 id="flavor-name">Gün Işığı</h2>
-            <p id="flavor-copy">Tatlı kök sebzelerle dengelenen parlak bir narenciye tadı.</p>
-          </div>
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #08090d;
+    }
+    .glow-orb {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, rgba(16, 185, 129, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(60px);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #a3e635 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="h-full flex items-center justify-center text-white relative overflow-hidden selection:bg-emerald-500 selection:text-black">
 
-          <div class="hero-ingredients-wrap">
-            <p class="hero-ingredients__heading">TARİFİN ÖNE ÇIKANLARI</p>
-            <ul class="hero-ingredients" id="hero-ingredients" aria-label="Gün Işığı tarifinin öne çıkan malzemeleri">
-              <li><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-orange" /></svg><span>Portakal</span></li>
-              <li><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-carrot" /></svg><span>Havuç</span></li>
-              <li><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-apple" /></svg><span>Yeşil elma</span></li>
-              <li><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-ginger" /></svg><span>Zencefil</span></li>
-            </ul>
-          </div>
+  <!-- Subtle Ambient Glow -->
+  <div class="glow-orb top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
 
-          <div class="flavor-switch" role="group" aria-label="Öne çıkan içeceği seç">
-            <button class="flavor-switch__button is-active" type="button" data-select-product="orange" aria-label="Gün Işığı — turuncu içecek" aria-pressed="true"><span class="flavor-swatch flavor-swatch--orange"></span>Gün Işığı</button>
-            <button class="flavor-switch__button" type="button" data-select-product="red" aria-label="Kızıl Pancar — kırmızı içecek" aria-pressed="false"><span class="flavor-swatch flavor-swatch--red"></span>Kızıl Pancar</button>
-            <button class="flavor-switch__button" type="button" data-select-product="green" aria-label="Yeşil Filiz — yeşil içecek" aria-pressed="false"><span class="flavor-swatch flavor-swatch--green"></span>Yeşil Filiz</button>
-          </div>
+  <!-- Minimalist Centered Content -->
+  <main class="text-center px-6 z-10 space-y-5">
+    
+    <!-- Logo Icon -->
+    <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-500 to-lime-400 text-black shadow-2xl shadow-emerald-500/20 mb-2">
+      <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+    </div>
 
-          <a class="hero__link" id="hero-product-link" href="#product-gun-isigi"><span class="hero__link-label" id="hero-product-link-text">Gün Işığı’nı keşfet</span><span aria-hidden="true">→</span></a>
-        </div>
+    <!-- Main Text -->
+    <div class="space-y-3">
+      <h1 class="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight uppercase">
+        FIT<span class="gradient-text">FLYS</span>
+      </h1>
+      <p class="text-xl sm:text-2xl md:text-3xl font-light tracking-wide text-zinc-300">
+        Çok yakında sizlerle.
+      </p>
+    </div>
 
-        <div class="hero__visual" role="group" aria-label="Öne çıkan FitFlys içeceği">
-          <div class="hero__glow" aria-hidden="true"></div>
-          <div class="hero__orbit hero__orbit--one" aria-hidden="true"></div>
-          <div class="hero__orbit hero__orbit--two" aria-hidden="true"></div>
-          <img class="hero__garnish" id="hero-garnish" src="assets/hero-ingredients-orange.png" alt="" aria-hidden="true" fetchpriority="high" />
-          <figure class="hero-bottle hero-bottle--orange is-active" data-visual-product="orange">
-            <img src="assets/orange-splash-cutout.png" alt="" fetchpriority="high" />
-            <figcaption>01 <span>GÜN IŞIĞI</span></figcaption>
-          </figure>
-          <figure class="hero-bottle hero-bottle--red" data-visual-product="red">
-            <img src="assets/red-splash-cutout.png" alt="" loading="lazy" />
-            <figcaption>02 <span>KIZIL PANCAR</span></figcaption>
-          </figure>
-          <figure class="hero-bottle hero-bottle--green" data-visual-product="green">
-            <img src="assets/green-splash-cutout.png" alt="" loading="lazy" />
-            <figcaption>03 <span>YEŞİL FİLİZ</span></figcaption>
-          </figure>
-          <div class="hero__visual-note"><span>MEYVE + SEBZE · SOĞUK SIKIM</span><span>350 ML</span></div>
-        </div>
-        <a class="scroll-cue" href="#products"><span aria-hidden="true">↓</span> AŞAĞI KAYDIR</a>
-      </section>
+    <!-- Subtitle / Domain -->
+    <div class="pt-4">
+      <span class="text-xs uppercase tracking-[0.3em] text-zinc-500 font-medium">
+        fitflys.com
+      </span>
+    </div>
 
-      <section class="method section-pad" id="method" aria-labelledby="method-title">
-        <div class="method__intro">
-          <p class="eyebrow"><span class="eyebrow__dot"></span> FITFLYS’İN YAKLAŞIMI</p>
-          <h2 id="method-title">İçerik belli.<br /><em>Yöntem belli.</em></h2>
-          <p>Meyve, sebze ve bitkilerden üç ayrı tarif. Her karışım, soğuk sıkım yöntemiyle 350 ml’lik şişelerde hazırlanır.</p>
-        </div>
-        <ol class="method__steps">
-          <li class="method-step">
-            <span class="method-step__number">01</span>
-            <span class="method-step__icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 39V20m0 8c-9 0-14-5-14-12 8-2 13 2 14 8m0-1c1-9 7-13 15-12 0 8-5 14-15 15m0-8C22 9 15 7 9 10c1 8 7 12 15 13" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg></span>
-            <div><h3>Malzemeler</h3><p>Meyve, sebze ve bitkiler; her tarifte farklı bir dengede.</p></div>
-          </li>
-          <li class="method-step">
-            <span class="method-step__number">02</span>
-            <span class="method-step__icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 7c5 7 12 14 12 22a12 12 0 1 1-24 0c0-8 7-15 12-22Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"/><path d="M18 30c1 3 3 5 6 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg></span>
-            <div><h3>Soğuk sıkım</h3><p>Meyve ve sebzeler, ısı uygulanmadan mekanik presle sıkılır.</p></div>
-          </li>
-          <li class="method-step">
-            <span class="method-step__number">03</span>
-            <span class="method-step__icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M10 16h28v22H10zM16 10h16v6M16 23h16m-16 6h11" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg></span>
-            <div><h3>Üç ayrı karakter</h3><p>Gün Işığı, Kızıl Pancar ve Yeşil Filiz. Her biri 350 ml.</p></div>
-          </li>
-        </ol>
-      </section>
+  </main>
 
-      <section class="products" id="products" aria-label="FitFlys içecekleri">
-        <article class="product-scene product-scene--orange" id="product-gun-isigi" aria-labelledby="product-gun-isigi-title">
-          <div class="product-scene__layout">
-          <div class="product-scene__visual">
-            <img class="product-scene__garnish" src="assets/hero-ingredients-orange.png" alt="" aria-hidden="true" loading="lazy" />
-            <span class="product-scene__watermark" aria-hidden="true">01</span>
-            <span class="product-scene__visual-label">FITFLYS <i>·</i> 350 ML</span>
-            <div class="product-scene__halo" aria-hidden="true"></div>
-            <img class="product-scene__bottle" src="assets/orange-cutout.png" alt="Gün Işığı turuncu içecek şişesi" loading="lazy" />
-            <div class="product-scene__visual-footer"><span>SOĞUK SIKIM</span><span>01 / 03</span></div>
-          </div>
-          <div class="product-scene__content">
-            <p class="product-scene__eyebrow"><span></span> 01 / TURUNCU KARIŞIM</p>
-            <h2 id="product-gun-isigi-title">Gün <em>Işığı</em></h2>
-            <div class="product-scene__ingredients-heading" id="ingredients"><span>ÖNE ÇIKAN MALZEMELER</span></div>
-            <ul class="ingredient-grid" aria-label="Gün Işığı öne çıkan malzemeleri">
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-carrot" /></svg></span><span>Havuç</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-ginger" /></svg></span><span>Zencefil</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-orange" /></svg></span><span>Portakal</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-apple" /></svg></span><span>Yeşil elma</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-lemon" /></svg></span><span>Limon</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-mint" /></svg></span><span>Nane</span></li>
-            </ul>
-            <div class="product-scene__taste"><span>LEZZET PROFİLİ</span><p>Narenciye <i>·</i> kök sebze <i>·</i> aromatik bitiş</p></div>
-            <div class="product-scene__facts"><span>350 ml <small>ŞİŞE HACMİ</small></span><span>Soğuk sıkım <small>ÜRETİM YÖNTEMİ</small></span></div>
-            <a class="product-scene__next" href="#product-kizil-nar"><span><small>SONRAKİ İÇECEK</small><strong>02 <i>—</i> Kızıl Pancar</strong></span><b aria-hidden="true">↘</b></a>
-          </div>
-          </div>
-        </article>
-
-        <article class="product-scene product-scene--red" id="product-kizil-nar" aria-labelledby="product-kizil-nar-title">
-          <div class="product-scene__layout">
-          <div class="product-scene__visual">
-            <img class="product-scene__garnish" src="assets/hero-ingredients-red.png" alt="" aria-hidden="true" loading="lazy" />
-            <span class="product-scene__watermark" aria-hidden="true">02</span>
-            <span class="product-scene__visual-label">FITFLYS <i>·</i> 350 ML</span>
-            <div class="product-scene__halo" aria-hidden="true"></div>
-            <img class="product-scene__bottle" src="assets/red-cutout.png" alt="Kızıl Pancar kırmızı içecek şişesi" loading="lazy" />
-            <div class="product-scene__visual-footer"><span>SOĞUK SIKIM</span><span>02 / 03</span></div>
-          </div>
-          <div class="product-scene__content">
-            <p class="product-scene__eyebrow"><span></span> 02 / KIRMIZI KARIŞIM</p>
-            <h2 id="product-kizil-nar-title">Kızıl <em>Pancar</em></h2>
-            <div class="product-scene__ingredients-heading"><span>ÖNE ÇIKAN MALZEMELER</span></div>
-            <ul class="ingredient-grid" aria-label="Kızıl Pancar öne çıkan malzemeleri">
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-beet" /></svg></span><span>Pancar</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-carrot" /></svg></span><span>Havuç</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-apple" /></svg></span><span>Yeşil elma</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-orange" /></svg></span><span>Portakal</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-lemon" /></svg></span><span>Limon</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-ginger" /></svg></span><span>Zencefil</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-mint" /></svg></span><span>Nane</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-basil" /></svg></span><span>Fesleğen</span></li>
-            </ul>
-            <div class="product-scene__taste"><span>LEZZET PROFİLİ</span><p>Topraksı <i>·</i> meyvemsi <i>·</i> aromatik</p></div>
-            <div class="product-scene__facts"><span>350 ml <small>ŞİŞE HACMİ</small></span><span>Soğuk sıkım <small>ÜRETİM YÖNTEMİ</small></span></div>
-            <a class="product-scene__next" href="#product-yesil-filiz"><span><small>SONRAKİ İÇECEK</small><strong>03 <i>—</i> Yeşil Filiz</strong></span><b aria-hidden="true">↘</b></a>
-          </div>
-          </div>
-        </article>
-
-        <article class="product-scene product-scene--green" id="product-yesil-filiz" aria-labelledby="product-yesil-filiz-title">
-          <div class="product-scene__layout">
-          <div class="product-scene__visual">
-            <img class="product-scene__garnish" src="assets/hero-ingredients-green.png" alt="" aria-hidden="true" loading="lazy" />
-            <span class="product-scene__watermark" aria-hidden="true">03</span>
-            <span class="product-scene__visual-label">FITFLYS <i>·</i> 350 ML</span>
-            <div class="product-scene__halo" aria-hidden="true"></div>
-            <img class="product-scene__bottle" src="assets/green-cutout.png" alt="Yeşil Filiz yeşil içecek şişesi" loading="lazy" />
-            <div class="product-scene__visual-footer"><span>SOĞUK SIKIM</span><span>03 / 03</span></div>
-          </div>
-          <div class="product-scene__content">
-            <p class="product-scene__eyebrow"><span></span> 03 / YEŞİL KARIŞIM</p>
-            <h2 id="product-yesil-filiz-title">Yeşil <em>Filiz</em></h2>
-            <div class="product-scene__ingredients-heading"><span>ÖNE ÇIKAN MALZEMELER</span></div>
-            <ul class="ingredient-grid" aria-label="Yeşil Filiz öne çıkan malzemeleri">
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-spinach" /></svg></span><span>Ispanak</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-celery" /></svg></span><span>Kereviz sapı</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-cucumber" /></svg></span><span>Salatalık</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-apple" /></svg></span><span>Yeşil elma</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-carrot" /></svg></span><span>Havuç</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-parsley" /></svg></span><span>Maydanoz</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-mint" /></svg></span><span>Nane</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-basil" /></svg></span><span>Fesleğen</span></li>
-              <li><span class="ingredient-grid__image"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-ginger" /></svg></span><span>Zencefil</span></li>
-            </ul>
-            <div class="product-scene__taste"><span>LEZZET PROFİLİ</span><p>Bitkisel <i>·</i> elma dengesi <i>·</i> ot aroması</p></div>
-            <div class="product-scene__facts"><span>350 ml <small>ŞİŞE HACMİ</small></span><span>Soğuk sıkım <small>ÜRETİM YÖNTEMİ</small></span></div>
-            <a class="product-scene__next" href="#story"><span><small>FITFLYS HİKÂYESİ</small><strong>Her parçaya değer</strong></span><b aria-hidden="true">↘</b></a>
-          </div>
-          </div>
-        </article>
-      </section>
-
-      <section class="story section-pad" id="story" aria-labelledby="story-title">
-        <div class="story__portrait reveal">
-          <img src="assets/ahmet-akay-portrait.png" alt="Ahmet AKAY, elleri önde birleşik ve kameraya gülümserken" loading="lazy" />
-          <span class="story__caption">AHMET AKAY <i>FITFLYS’İN ARKASINDAKİ İSİM</i></span>
-        </div>
-        <div class="story__copy reveal">
-          <p class="eyebrow"><span class="eyebrow__dot"></span> FITFLYS’İN ÇIKIŞ NOKTASI</p>
-          <h2 id="story-title">Atıksız<br /><em>ne yapabiliriz?</em></h2>
-          <p>FitFlys, soğuk sıkım sonrası kalan meyve ve sebze posalarını nasıl değerlendirebileceğimizi sorduğumuzda şekillenmeye başladı. Posaları kek ve galetalara dönüştürmek, kalan kısmı hayvan yemi olarak değerlendirmek bu yolculuğun çıkış fikri oldu.</p>
-          <p class="story__signoff">Her parçaya yeniden değer verme fikri.</p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <a class="brand brand--footer" href="#top" aria-label="FitFlys sayfa başına dön"><img class="brand__mark" src="assets/fitflys-mark.svg" alt="" /><span class="brand__word">FITFLYS<span class="brand__sub">MEYVE · SEBZE · SOĞUK SIKIM</span></span></a>
-      <p>Doğadan gelen. Her parçaya değer veren.</p>
-      <a class="footer-top" href="#top">BAŞA DÖN <span aria-hidden="true">↑</span></a>
-      <small>© <span id="current-year">2026</span> FITFLYS</small>
-    </footer>
-  </body>
+</body>
 </html>
