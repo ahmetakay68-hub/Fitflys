@@ -1,127 +1,183 @@
-// FitFlys Interactive Scripts
+document.documentElement.classList.remove('no-js');
+document.documentElement.classList.add('has-js');
 
-document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize Lucide Icons
-  if (window.lucide) {
-    window.lucide.createIcons();
+const menuToggle = document.querySelector('.menu-toggle');
+const mainNav = document.querySelector('#main-nav');
+
+const flavors = {
+  orange: {
+    index: '01 / TURUNCU KARIŞIM',
+    name: 'Gün Işığı',
+    copy: 'Narenciyenin parlak tadı, havuç ve yeşil elmayla dengelenir.',
+    target: '#product-gun-isigi',
+    linkLabel: "Gün Işığı'nı keşfet",
+    garnish: 'assets/hero-ingredients-orange.png',
+    highlights: [
+      { id: 'orange', label: 'Portakal' },
+      { id: 'carrot', label: 'Havuç' },
+      { id: 'apple', label: 'Yeşil elma' },
+      { id: 'ginger', label: 'Zencefil' }
+    ]
+  },
+  red: {
+    index: '02 / KIRMIZI KARIŞIM',
+    name: 'Kızıl Nar',
+    copy: 'Pancarın topraksı tadı, yeşil elma ve aromatik otlarla dengelenir.',
+    target: '#product-kizil-nar',
+    linkLabel: "Kızıl Nar'ı keşfet",
+    garnish: 'assets/hero-ingredients-red.png',
+    highlights: [
+      { id: 'beet', label: 'Pancar' },
+      { id: 'carrot', label: 'Havuç' },
+      { id: 'apple', label: 'Yeşil elma' },
+      { id: 'basil', label: 'Fesleğen' }
+    ]
+  },
+  green: {
+    index: '03 / YEŞİL KARIŞIM',
+    name: 'Yeşil Filiz',
+    copy: 'Yeşil sebzelerin bitkisel tadı, elma ve aromatik otlarla dengelenir.',
+    target: '#product-yesil-filiz',
+    linkLabel: "Yeşil Filiz'i keşfet",
+    garnish: 'assets/hero-ingredients-green.png',
+    highlights: [
+      { id: 'spinach', label: 'Ispanak' },
+      { id: 'cucumber', label: 'Salatalık' },
+      { id: 'celery', label: 'Kereviz sapı' },
+      { id: 'apple', label: 'Yeşil elma' }
+    ]
   }
+};
 
-  // 2. Navbar Scroll Effect
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-      navbar.classList.add('bg-[#090a0f]/90', 'backdrop-blur-md', 'border-b', 'border-white/10', 'py-4');
-      navbar.classList.remove('py-6');
+const showcase = document.querySelector('#showcase');
+const flavorIndex = document.querySelector('#flavor-index');
+const flavorName = document.querySelector('#flavor-name');
+const flavorCopy = document.querySelector('#flavor-copy');
+const heroProductLink = document.querySelector('#hero-product-link');
+const heroProductLinkText = document.querySelector('#hero-product-link-text');
+const heroGarnish = document.querySelector('#hero-garnish');
+const heroIngredients = document.querySelector('#hero-ingredients');
+const flavorButtons = [...document.querySelectorAll('[data-select-product]')];
+const bottles = [...document.querySelectorAll('[data-visual-product]')];
+
+function ingredientIcon(id) {
+  return `<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ingredient-${id}" /></svg>`;
+}
+
+function selectFlavor(flavor) {
+  const details = flavors[flavor];
+  if (!details || !showcase) return;
+
+  showcase.dataset.theme = flavor;
+  if (flavorIndex) flavorIndex.textContent = details.index;
+  if (flavorName) flavorName.textContent = details.name;
+  if (flavorCopy) flavorCopy.textContent = details.copy;
+  if (heroProductLink) heroProductLink.href = details.target;
+  if (heroProductLinkText) heroProductLinkText.textContent = details.linkLabel;
+  if (heroGarnish && heroGarnish.getAttribute('src') !== details.garnish) {
+    heroGarnish.src = details.garnish;
+    heroGarnish.classList.remove('is-changing');
+    requestAnimationFrame(() => heroGarnish.classList.add('is-changing'));
+  }
+  if (heroIngredients) {
+    heroIngredients.innerHTML = details.highlights
+      .map(({ id, label }) => `<li>${ingredientIcon(id)}<span>${label}</span></li>`)
+      .join('');
+    heroIngredients.setAttribute('aria-label', `${details.name} tarifinin öne çıkan malzemeleri`);
+  }
+  flavorButtons.forEach((button) => {
+    const selected = button.dataset.selectProduct === flavor;
+    button.classList.toggle('is-active', selected);
+    button.setAttribute('aria-pressed', String(selected));
+  });
+
+  bottles.forEach((bottle) => {
+    const selected = bottle.dataset.visualProduct === flavor;
+    bottle.classList.toggle('is-active', selected);
+    if (selected) {
+      bottle.setAttribute('aria-label', `${details.name} FitFlys içeceği`);
     } else {
-      navbar.classList.remove('bg-[#090a0f]/90', 'backdrop-blur-md', 'border-b', 'border-white/10', 'py-4');
-      navbar.classList.add('py-6');
+      bottle.removeAttribute('aria-label');
     }
   });
+}
 
-  // 3. Mobile Menu Toggle
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+flavorButtons.forEach((button) => {
+  button.addEventListener('click', () => selectFlavor(button.dataset.selectProduct));
+});
 
-  if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+function closeMenu() {
+  if (!menuToggle || !mainNav) return;
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.setAttribute('aria-label', 'Menüyü aç');
+  mainNav.classList.remove('is-open');
+}
 
-    mobileMenuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
-  }
-
-  // 4. FAQ Accordion Functionality
-  const accordionButtons = document.querySelectorAll('.accordion-btn');
-  accordionButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const content = button.nextElementSibling;
-      const icon = button.querySelector('.accordion-icon');
-      const isOpen = content.classList.contains('open');
-
-      // Close all open accordions first
-      document.querySelectorAll('.accordion-content').forEach(item => {
-        item.classList.remove('open');
-      });
-      document.querySelectorAll('.accordion-icon').forEach(ic => {
-        ic.classList.remove('rotate-180');
-      });
-
-      // Toggle current
-      if (!isOpen) {
-        content.classList.add('open');
-        if (icon) icon.classList.add('rotate-180');
-      }
-    });
+if (menuToggle && mainNav) {
+  menuToggle.addEventListener('click', () => {
+    const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', String(!isOpen));
+    menuToggle.setAttribute('aria-label', isOpen ? 'Menüyü aç' : 'Menüyü kapat');
+    mainNav.classList.toggle('is-open', !isOpen);
   });
 
-  // 5. Animated Number Counters
-  const counters = document.querySelectorAll('.counter-val');
-  let animated = false;
+  mainNav.addEventListener('click', (event) => {
+    if (event.target.closest('a')) closeMenu();
+  });
 
-  const runCounters = () => {
-    counters.forEach(counter => {
-      const target = +counter.getAttribute('data-target');
-      const duration = 1500;
-      const step = target / (duration / 16);
-      let current = 0;
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
+  });
+}
 
-      const updateCounter = () => {
-        current += step;
-        if (current < target) {
-          counter.innerText = Math.ceil(current).toLocaleString();
-          requestAnimationFrame(updateCounter);
-        } else {
-          counter.innerText = target.toLocaleString() + (counter.getAttribute('data-suffix') || '');
-        }
-      };
-      updateCounter();
+const revealItems = [...document.querySelectorAll('.reveal')];
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
     });
-  };
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !animated) {
-          animated = true;
-          runCounters();
-        }
+  revealItems.forEach((item) => revealObserver.observe(item));
+} else {
+  revealItems.forEach((item) => item.classList.add('is-visible'));
+}
+
+const productScenes = [...document.querySelectorAll('.product-scene')];
+if ('IntersectionObserver' in window) {
+  const productMotionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      entry.target.classList.toggle('is-active', entry.isIntersecting);
+      entry.target.querySelectorAll('.reveal').forEach((item) => {
+        item.classList.toggle('is-visible', entry.isIntersecting);
       });
-    },
-    { threshold: 0.3 }
-  );
-
-  const statsSection = document.getElementById('stats-section');
-  if (statsSection) {
-    observer.observe(statsSection);
-  }
-
-  // 6. Contact Form Submission Handling
-  const contactForm = document.getElementById('contact-form');
-  const toast = document.getElementById('toast');
-  const toastMessage = document.getElementById('toast-message');
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const nameInput = document.getElementById('form-name');
-      const name = nameInput ? nameInput.value.trim() : 'Ziyaretçimiz';
-
-      // Show toast
-      if (toast && toastMessage) {
-        toastMessage.innerText = `Teşekkürler ${name}! Mesajınız alındı, en kısa sürede sizinle iletişime geçeceğiz.`;
-        toast.classList.add('show');
-        setTimeout(() => {
-          toast.classList.remove('show');
-        }, 4500);
-      }
-
-      contactForm.reset();
     });
-  }
-});
+  }, { threshold: 0.4, rootMargin: '0px' });
+
+  productScenes.forEach((scene) => productMotionObserver.observe(scene));
+} else {
+  productScenes.forEach((scene) => scene.classList.add('is-active'));
+}
+
+const progressBar = document.querySelector('#scroll-meter-bar');
+let scrollPending = false;
+
+function updateScrollMeter() {
+  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+  if (progressBar) progressBar.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
+  scrollPending = false;
+}
+
+window.addEventListener('scroll', () => {
+  if (scrollPending) return;
+  scrollPending = true;
+  window.requestAnimationFrame(updateScrollMeter);
+}, { passive: true });
+window.addEventListener('resize', updateScrollMeter, { passive: true });
+updateScrollMeter();
+
+const year = document.querySelector('#current-year');
+if (year) year.textContent = String(new Date().getFullYear());
