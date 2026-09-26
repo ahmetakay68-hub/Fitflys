@@ -1547,3 +1547,16 @@ h1 em,h2 em {
   .product-copy .ingredients { margin-top: 12px; }
   .product-copy .text-link { margin-top: 11px; }
 }
+
+/* Mobile: show the complete product photo edge to edge and explain swipe navigation. */
+@media (max-width: 760px) {
+  :root { --footer: 54px; }
+  .scene--product { grid-template-rows: calc(100vw * 2 / 3) minmax(0, 1fr); }
+  .product-visual img { object-fit: contain; object-position: center; }
+  .chapter-bar { justify-content: center; padding: 0 20px; }
+  .chapter-bar .chapters, .chapter-bar .scene-arrows { display: none; }
+  .chapter-bar .scroll-instruction { display: flex; align-items: center; gap: 10px; font-size: 11px; color: #e4ebdc; }
+  .scroll-instruction .scroll-icon { width: 25px; height: 25px; }
+  .no-js .scene--product { grid-template-rows: calc(100vw * 2 / 3) auto; }
+  .no-js .scene--product .product-visual { min-height: 0; }
+}
