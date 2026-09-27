@@ -27,6 +27,46 @@
   let wheelGestureConsumed = false;
   let unlockTimer;
   let touchStart = null;
+  let touchResetTimer;
+  let touchResetState = null;
+  function clearTouchScene(scene) {
+    if (!scene) return;
+    scene.style.removeProperty('transform');
+    scene.style.removeProperty('transition');
+    scene.style.removeProperty('visibility');
+    scene.style.removeProperty('z-index');
+  }
+  function clearTouchStyles(state) {
+    clearTouchScene(state?.currentScene);
+    clearTouchScene(state?.neighborScene);
+  }
+  function settleTouchDrag(state, commit, direction) {
+    if (!state?.dragging || !state.neighborScene) return false;
+    clearTimeout(touchResetTimer);
+    touchResetState = null;
+    const currentScene = state.currentScene;
+    const neighborScene = state.neighborScene;
+    if (commit && direction === state.dragDirection && scenes[current + direction] === neighborScene) {
+      const transition = reducedMotion.matches ? 'transform .1s ease-out' : 'transform .85s cubic-bezier(.76,0,.24,1)';
+      currentScene.style.transition = transition;
+      neighborScene.style.transition = transition;
+      goTo(current + direction);
+      neighborScene.getBoundingClientRect();
+      requestAnimationFrame(() => clearTouchStyles(state));
+    } else {
+      currentScene.style.transition = 'transform .22s ease-out';
+      neighborScene.style.transition = 'transform .22s ease-out';
+      currentScene.style.transform = 'translateX(0px)';
+      const stageWidth = stage.clientWidth || window.innerWidth;
+      neighborScene.style.transform = `translateX(${state.dragDirection * stageWidth}px)`;
+      touchResetState = state;
+      touchResetTimer = setTimeout(() => {
+        clearTouchStyles(state);
+        touchResetState = null;
+      }, 240);
+    }
+    return true;
+  }
 
   function loadScene(index) {
     scenes[index]?.querySelectorAll('source[data-srcset]').forEach(source => {
@@ -149,31 +189,86 @@
   });
   const stage = document.querySelector('.stage');
   stage.addEventListener('touchstart', event => {
-    if (event.touches.length !== 1) { touchStart = null; return; }
+    if (event.touches.length !== 1) {
+      const state = touchStart;
+      touchStart = null;
+      settleTouchDrag(state, false, 0);
+      return;
+    }
+    if (touchResetTimer) {
+      clearTimeout(touchResetTimer);
+      clearTouchStyles(touchResetState);
+      touchResetState = null;
+    }
     const touch = event.touches[0];
-    touchStart = { x: touch.clientX, y: touch.clientY, target: event.target, nativeScroll: false };
+    touchStart = {
+      x: touch.clientX,
+      y: touch.clientY,
+      target: event.target,
+      currentScene: scenes[current],
+      neighborScene: null,
+      dragDirection: 0,
+      dragging: false,
+      nativeScroll: false
+    };
   }, { passive: true });
   stage.addEventListener('touchmove', event => {
     if (!touchStart || event.touches.length !== 1) return;
-    const dy = touchStart.y - event.touches[0].clientY;
-    const dx = touchStart.x - event.touches[0].clientX;
-    if (mobileLayout.matches && Math.abs(dy) >= Math.abs(dx)) return;
-    if (Math.abs(dy) >= Math.abs(dx) && canScrollInside(touchStart.target, dy)) touchStart.nativeScroll = true;
-    if (!touchStart.nativeScroll) event.preventDefault();
+    const touch = event.touches[0];
+    const dy = touchStart.y - touch.clientY;
+    const dx = touchStart.x - touch.clientX;
+    const horizontalSwipe = Math.abs(dx) > Math.abs(dy) * 1.2;
+    if (mobileLayout.matches && !horizontalSwipe) return;
+    if (!horizontalSwipe && canScrollInside(touchStart.target, dy)) touchStart.nativeScroll = true;
+    if (touchStart.nativeScroll) return;
+    if (!mobileLayout.matches || horizontalSwipe) event.preventDefault();
+    if (!horizontalSwipe || Math.abs(dx) < 8) return;
+    const direction = Math.sign(dx);
+    const neighborScene = scenes[current + direction];
+    if (!neighborScene) return;
+    if (touchStart.neighborScene && touchStart.neighborScene !== neighborScene) {
+      clearTouchScene(touchStart.neighborScene);
+    }
+    touchStart.dragging = true;
+    touchStart.dragDirection = direction;
+    touchStart.neighborScene = neighborScene;
+    const offsetX = Math.max(-stage.clientWidth, Math.min(stage.clientWidth, touch.clientX - touchStart.x));
+    touchStart.currentScene.style.transition = 'none';
+    touchStart.currentScene.style.visibility = 'visible';
+    touchStart.currentScene.style.zIndex = '2';
+    touchStart.currentScene.style.transform = `translateX(${offsetX}px)`;
+    neighborScene.style.transition = 'none';
+    neighborScene.style.visibility = 'visible';
+    neighborScene.style.zIndex = '3';
+    const stageWidth = stage.clientWidth || window.innerWidth;
+    neighborScene.style.transform = `translateX(${direction * stageWidth + offsetX}px)`;
   }, { passive: false });
   stage.addEventListener('touchend', event => {
     if (!touchStart || !event.changedTouches.length) return;
+    const state = touchStart;
     const touch = event.changedTouches[0];
-    const dx = touchStart.x - touch.clientX;
-    const dy = touchStart.y - touch.clientY;
+    const dx = state.x - touch.clientX;
+    const dy = state.y - touch.clientY;
     const horizontalSwipe = Math.abs(dx) > Math.abs(dy) * 1.2;
     const delta = horizontalSwipe ? dx : dy;
-    const nativeScroll = touchStart.nativeScroll;
+    const nativeScroll = state.nativeScroll;
     touchStart = null;
-    if (mobileLayout.matches && !horizontalSwipe) return;
-    if (Math.abs(delta) > 55 && !locked && !nativeScroll) goTo(current + Math.sign(delta));
+    if (mobileLayout.matches && !horizontalSwipe) {
+      settleTouchDrag(state, false, 0);
+      return;
+    }
+    const shouldNavigate = Math.abs(delta) > 55 && !locked && !nativeScroll;
+    if (state.dragging) {
+      settleTouchDrag(state, shouldNavigate && horizontalSwipe, Math.sign(dx));
+      return;
+    }
+    if (shouldNavigate) goTo(current + Math.sign(delta));
   }, { passive: true });
-  stage.addEventListener('touchcancel', () => { touchStart = null; }, { passive: true });
+  stage.addEventListener('touchcancel', () => {
+    const state = touchStart;
+    touchStart = null;
+    settleTouchDrag(state, false, 0);
+  }, { passive: true });
   function restoreHash() {
     // Preserve incoming links from the previous site.
     const aliases = { top:'baslangic', showcase:'baslangic', products:'gun-isigi', 'product-gun-isigi':'gun-isigi', 'product-kizil-nar':'kizil-pancar', 'product-yesil-filiz':'yesil-filiz', method:'soguk-sikim', ingredients:'gun-isigi', story:'hikayemiz' };
