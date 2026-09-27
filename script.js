@@ -8,6 +8,15 @@
   const progress = document.querySelector('#chapter-progress');
   const announcement = document.querySelector('#scene-announcement');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const mobileLayout = window.matchMedia('(max-width: 760px)');
+  const scrollHint = document.querySelector('.scroll-instruction');
+  function updateScrollHint() {
+    const isLast = current === scenes.length - 1;
+    scrollHint.querySelector('.scroll-icon').textContent = mobileLayout.matches ? (isLast ? '←' : '→') : '↓';
+    scrollHint.querySelector('span:last-child').textContent = mobileLayout.matches
+      ? (isLast ? 'Sola kaydır, önceki bölümü keşfet.' : 'Sağa kaydır, yeni bir tarif keşfet.')
+      : 'Kaydır, yeni bir tarif keşfet.';
+  }
   let current = 0;
   let locked = false;
   let wheelTotal = 0;
@@ -40,6 +49,7 @@
     const moveFocus = changed && oldScene.contains(document.activeElement);
     loadScene(index);
     current = index;
+    updateScrollHint();
     // Prefetch one upcoming scene, without downloading the whole collection.
     const activeImage = scenes[index].querySelector('img');
     const warmUpcoming = () => {
@@ -99,8 +109,11 @@
   previous.addEventListener('click', () => goTo(current - 1));
   next.addEventListener('click', () => goTo(current + 1));
   window.addEventListener('wheel', event => {
-    if (event.ctrlKey || event.metaKey || Math.abs(event.deltaX) > Math.abs(event.deltaY) || !event.deltaY) return;
-    if (canScrollInside(event.target, event.deltaY)) return;
+    if (event.ctrlKey || event.metaKey) return;
+    const deltaAxis = mobileLayout.matches ? event.deltaX : event.deltaY;
+    if (mobileLayout.matches ? Math.abs(event.deltaX) <= Math.abs(event.deltaY) : Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+    if (!deltaAxis) return;
+    if (!mobileLayout.matches && canScrollInside(event.target, deltaAxis)) return;
     event.preventDefault();
     const now = performance.now();
     const pause = now - lastWheel;
@@ -108,8 +121,8 @@
     if (pause > 180) { wheelTotal = 0; wheelGestureConsumed = false; }
     if (locked) { wheelGestureConsumed = true; wheelTotal = 0; return; }
     if (wheelGestureConsumed) { wheelTotal = 0; return; }
-    if (Math.sign(wheelTotal) !== Math.sign(event.deltaY)) wheelTotal = 0;
-    const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? innerHeight : 1);
+    if (Math.sign(wheelTotal) !== Math.sign(deltaAxis)) wheelTotal = 0;
+    const delta = deltaAxis * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? innerHeight : 1);
     wheelTotal += delta;
     if (Math.abs(wheelTotal) >= 45) {
       const direction = Math.sign(wheelTotal);
@@ -122,6 +135,7 @@
     if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
     if (event.target.closest('input,textarea,select,[contenteditable="true"]')) return;
     if (event.key === ' ' && event.target.closest('a,button')) return;
+    if (mobileLayout.matches && ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', ' '].includes(event.key)) return;
     const direction = ['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(event.key) ? 1
       : ['ArrowLeft', 'ArrowUp', 'PageUp'].includes(event.key) ? -1 : 0;
     if (!direction && !['Home', 'End'].includes(event.key)) return;
@@ -140,6 +154,7 @@
     if (!touchStart || event.touches.length !== 1) return;
     const dy = touchStart.y - event.touches[0].clientY;
     const dx = touchStart.x - event.touches[0].clientX;
+    if (mobileLayout.matches && Math.abs(dy) >= Math.abs(dx)) return;
     if (Math.abs(dy) >= Math.abs(dx) && canScrollInside(touchStart.target, dy)) touchStart.nativeScroll = true;
     if (!touchStart.nativeScroll) event.preventDefault();
   }, { passive: false });
@@ -148,9 +163,11 @@
     const touch = event.changedTouches[0];
     const dx = touchStart.x - touch.clientX;
     const dy = touchStart.y - touch.clientY;
-    const delta = Math.abs(dx) > Math.abs(dy) ? dx : dy;
+    const horizontalSwipe = Math.abs(dx) > Math.abs(dy) * 1.2;
+    const delta = mobileLayout.matches ? -dx : Math.abs(dx) > Math.abs(dy) ? dx : dy;
     const nativeScroll = touchStart.nativeScroll;
     touchStart = null;
+    if (mobileLayout.matches && !horizontalSwipe) return;
     if (Math.abs(delta) > 55 && !locked && !nativeScroll) goTo(current + Math.sign(delta));
   }, { passive: true });
   stage.addEventListener('touchcancel', () => { touchStart = null; }, { passive: true });
@@ -169,6 +186,7 @@
   window.addEventListener('popstate', restoreHash);
   window.addEventListener('hashchange', restoreHash);
   window.addEventListener('resize', updateScrollableCopies);
+  mobileLayout.addEventListener('change', updateScrollHint);
   document.fonts?.ready.then(updateScrollableCopies);
   // Warm only the next photo after the first one is ready.
   const firstImage = document.querySelector('.intro-visual img');
