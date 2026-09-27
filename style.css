@@ -1567,8 +1567,8 @@ h1 em,h2 em {
 .method-visual img { object-fit: cover; object-position: center; }
 @media (max-width: 760px) {
   .has-js .stage { touch-action: pan-y; }
-  .has-js .scene { transform: translateX(-100%); }
-  .has-js .scene[data-state="before"] { transform: translateX(100%); }
+  .has-js .scene { transform: translateX(100%); }
+  .has-js .scene[data-state="before"] { transform: translateX(-100%); }
   .has-js .scene.is-active { transform: translateX(0); }
   .scene--method { grid-template-rows: calc(100vw * 9 / 16) minmax(0, 1fr); }
   .method-visual img { object-fit: contain; }
