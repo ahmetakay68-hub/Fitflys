@@ -17,6 +17,6 @@ Derleme ve uygulama bağımlılığı yoktur. Klasör herhangi bir statik HTTP s
 
 ## Gezinme
 
-Fare tekerleği, yukarı/aşağı veya sağ/sol oklar, Page Up/Down, Home/End, dokunmatik kaydırma ve alttaki bölüm düğmeleri. Aşağı kaydırma yeni sahneyi sağdan getirir; ana belge dikey kaymaz. Küçük ekranlarda taşan metin alanları kendi içinde kaydırılabilir.
+Fare tekerleği, yukarı/aşağı veya sağ/sol oklar, Page Up/Down, Home/End, dokunmatik kaydırma ve alttaki bölüm düğmeleri. Mobilde sola kaydırma sonraki, sağa kaydırma önceki sahneye geçer; yeni sahne sağdan gelir. Ana belge dikey kaymaz. Küçük ekranlarda taşan metin alanları kendi içinde kaydırılabilir.
 
 URL bölümleri ve tarayıcı geri/ileri geçmişi desteklenir. Önceki sayfanın ürün bağlantıları yeni bölümlere eşlenir. JavaScript kapalıyken site fotoğraflarıyla birlikte normal dikey sayfa olarak çalışır. Azaltılmış hareket tercihi geçiş animasyonlarını kapatır.
