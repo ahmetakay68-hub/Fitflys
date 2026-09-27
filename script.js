@@ -12,7 +12,10 @@
   const scrollHint = document.querySelector('.scroll-instruction');
   function updateScrollHint() {
     const isLast = current === scenes.length - 1;
-    scrollHint.querySelector('.scroll-icon').textContent = mobileLayout.matches ? (isLast ? '←' : '→') : '↓';
+    const arrowPath = mobileLayout.matches
+      ? (isLast ? 'M19 12H5m6-6-6 6 6 6' : 'M5 12h14m-6-6 6 6-6 6')
+      : 'M12 5v14m-6-6 6 6 6-6';
+    scrollHint.querySelector('.scroll-icon').innerHTML = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="' + arrowPath + '" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>';
     scrollHint.querySelector('span:last-child').textContent = mobileLayout.matches
       ? (isLast ? 'Sola kaydır, önceki bölümü keşfet.' : 'Sağa kaydır, yeni bir tarif keşfet.')
       : 'Kaydır, yeni bir tarif keşfet.';
@@ -164,7 +167,7 @@
     const dx = touchStart.x - touch.clientX;
     const dy = touchStart.y - touch.clientY;
     const horizontalSwipe = Math.abs(dx) > Math.abs(dy) * 1.2;
-    const delta = mobileLayout.matches ? -dx : Math.abs(dx) > Math.abs(dy) ? dx : dy;
+    const delta = horizontalSwipe ? -dx : dy;
     const nativeScroll = touchStart.nativeScroll;
     touchStart = null;
     if (mobileLayout.matches && !horizontalSwipe) return;
