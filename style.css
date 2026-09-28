@@ -1574,8 +1574,8 @@ h1 em,h2 em {
     width: 120%;
     height: 110%;
     max-width: none;
-    inset: -5% auto auto 0;
-    object-position: center 26%;
+    inset: 0 auto auto 0;
+    object-position: center 13%;
   }
   .scene--method { grid-template-rows: calc(100vw * 9 / 16) minmax(0, 1fr); }
   .method-visual img { object-fit: contain; }
