@@ -757,7 +757,7 @@ h1 em,h2 em {
   min-height:0;
   transform:translateX(100%);
   visibility:hidden;
-  transition:transform .85s cubic-bezier(.76,0,.24,1),visibility 0s .85s;
+  transition:transform .65s cubic-bezier(.22,.61,.36,1),visibility 0s .65s;
   will-change:transform
 }
 
@@ -768,7 +768,7 @@ h1 em,h2 em {
 .has-js .scene.is-active {
   transform:translateX(0);
   visibility:visible;
-  transition:transform .85s cubic-bezier(.76,0,.24,1),visibility 0s;
+  transition:transform .65s cubic-bezier(.22,.61,.36,1),visibility 0s;
   z-index:2
 }
 
@@ -1570,6 +1570,13 @@ h1 em,h2 em {
   .has-js .scene { transform: translateX(100%); }
   .has-js .scene[data-state="before"] { transform: translateX(-100%); }
   .has-js .scene.is-active { transform: translateX(0); }
+  .story-visual img {
+    width: 120%;
+    height: 110%;
+    max-width: none;
+    inset: -5% auto auto 0;
+    object-position: center 26%;
+  }
   .scene--method { grid-template-rows: calc(100vw * 9 / 16) minmax(0, 1fr); }
   .method-visual img { object-fit: contain; }
   .method-visual:after { inset: 65% 0 0; }

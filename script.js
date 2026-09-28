@@ -47,7 +47,7 @@
     const currentScene = state.currentScene;
     const neighborScene = state.neighborScene;
     if (commit && direction === state.dragDirection && scenes[current + direction] === neighborScene) {
-      const transition = reducedMotion.matches ? 'transform .1s ease-out' : 'transform .85s cubic-bezier(.76,0,.24,1)';
+      const transition = reducedMotion.matches ? 'transform .1s ease-out' : 'transform .65s cubic-bezier(.22,.61,.36,1)';
       currentScene.style.transition = transition;
       neighborScene.style.transition = transition;
       goTo(current + direction);
@@ -133,7 +133,7 @@
       unlockTimer = setTimeout(() => {
         locked = false;
         scenes.forEach(scene => scene.classList.remove('is-leaving'));
-      }, reducedMotion.matches ? 100 : 880);
+      }, reducedMotion.matches ? 100 : 700);
     }
   }
   function canScrollInside(target, delta) {
