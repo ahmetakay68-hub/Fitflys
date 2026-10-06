@@ -1591,3 +1591,60 @@ h1 em,h2 em {
 /* Geometrically centered swipe arrow, independent of font metrics. */
 .scroll-instruction .scroll-icon { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; flex: 0 0 26px; border-radius: 50%; padding: 0; line-height: 0; }
 .scroll-icon svg { display: block; width: 16px; height: 16px; flex: 0 0 16px; }
+
+/* Persistent WhatsApp contact shortcut. */
+.whatsapp-link {
+  position: fixed;
+  z-index: 15;
+  right: clamp(16px, 3vw, 40px);
+  bottom: calc(var(--footer) + 18px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 0 20px;
+  border: 1px solid #ffffff50;
+  border-radius: 999px;
+  background: #16865b;
+  color: #fff;
+  box-shadow: 0 8px 28px #071e1838;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.whatsapp-link:hover {
+  background: #116f4a;
+  box-shadow: 0 10px 32px #071e1850;
+  transform: translateY(-2px);
+}
+.whatsapp-link svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+@media (max-width: 760px) {
+  .whatsapp-link {
+    right: 14px;
+    bottom: calc(var(--footer) + 12px);
+    width: 52px;
+    min-height: 52px;
+    padding: 0;
+    border: 2px solid #ffffffd9;
+    box-shadow: 0 4px 18px #071e184a;
+  }
+  .whatsapp-link__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-link { transition: none; }
+}
