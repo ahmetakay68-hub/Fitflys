@@ -106,6 +106,13 @@ button,a {
   flex-shrink:0
 }
 
+.brand__logo {
+  display:block;
+  width:112px;
+  height:auto;
+  filter:brightness(0) invert(1)
+}
+
 .brand__name {
   font-family:var(--serif);
   font-weight:600;
@@ -840,6 +847,9 @@ h1 em,h2 em {
   .brand__tag {
     display:none
   }
+  .brand__logo {
+    width:96px
+  }
   .header-nav {
     gap:22px
   }
@@ -894,6 +904,9 @@ h1 em,h2 em {
   }
   .brand__name {
     font-size:36px
+  }
+  .brand__logo {
+    width:88px
   }
   .header-nav {
     display:none
@@ -1328,9 +1341,9 @@ h1 em,h2 em {
 .intro-note__detail { font-size: 10px; color: #d0dfd0; }
 .product-format { display: flex; align-items: center; gap: 14px; margin: -9px 0 20px; font-size: 10px; letter-spacing: 1px; color: var(--tone); }
 .product-format span:last-child { padding-left: 14px; border-left: 1px solid #233d3135; letter-spacing: 0; font-weight: 600; }
-.scene--orange { --photo: url('assets/proportioned-orange-wide.webp'); }
-.scene--red { --photo: url('assets/proportioned-red-wide.webp'); }
-.scene--green { --photo: url('assets/proportioned-green-wide.webp'); }
+.scene--orange { --photo: url('assets/fitflys-labels-orange.webp'); }
+.scene--red { --photo: url('assets/fitflys-labels-red.webp'); }
+.scene--green { --photo: url('assets/fitflys-labels-green.webp'); }
 .product-visual:before {
   content: '';
   position: absolute;
@@ -1349,7 +1362,7 @@ h1 em,h2 em {
 .story-visual:after { inset: 75% 0 0; }
 @media (min-width: 1800px) {
   :root { --pad: 5vw; --header: clamp(100px, 3.2vw, 128px); --footer: clamp(88px, 3vw, 115px); }
-  .brand__name { font-size: clamp(45px, 2.2vw, 82px); }
+  .brand__logo { width: clamp(112px, 5.6vw, 170px); }
   .brand__tag { font-size: clamp(9px, .42vw, 16px); }
   .header-nav { font-size: clamp(13px, .7vw, 26px); gap: 2vw; }
   .header-discover { font-size: clamp(12px, .6vw, 23px); }
@@ -1411,9 +1424,9 @@ h1 em,h2 em {
   .intro-note__detail { font-size: 8px; }
   .product-format { font-size: 8px; margin: 0 0 10px; }
   .product-visual img { padding: 10px; object-fit: contain; }
-  .scene--orange { --photo: url('assets/proportioned-orange-wide.webp'); }
-  .scene--red { --photo: url('assets/proportioned-red-wide.webp'); }
-  .scene--green { --photo: url('assets/proportioned-green-wide.webp'); }
+  .scene--orange { --photo: url('assets/fitflys-labels-orange.webp'); }
+  .scene--red { --photo: url('assets/fitflys-labels-red.webp'); }
+  .scene--green { --photo: url('assets/fitflys-labels-green.webp'); }
   .story-visual img { padding: 10px; }
 }
 @media (max-height: 730px) and (max-width: 760px) {
